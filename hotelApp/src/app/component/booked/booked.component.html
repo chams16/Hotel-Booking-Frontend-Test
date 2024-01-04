@@ -1,0 +1,35 @@
+<div class="card hotel" *ngIf="availableBooking">
+  <div class="hotel-content">
+    <div class="hotel-name">
+      <h4><a>{{hotel.name}}</a></h4>
+      <span>{{hotel.adress}}</span>
+    </div>
+    <ul class="hotel-contact-details">
+
+      <li><i class="zmdi zmdi-email"></i>{{ hotel.email}}</li>
+
+    </ul>
+    <div class="hotel-name">
+      <li><span class="mr-1">number of room :</span>{{hotel.roomnbr}}</li>
+      <li><span  class="mr-1">Category :</span>
+        <ngb-rating [max]="5" [(rate)]="hotel.category" [readonly]="true"></ngb-rating>
+      </li>
+      <li><span class="mr-1">Price per Person :</span>{{hotel.price | currency}}</li>
+    </div>
+    <div class="hotelpayment">
+      <span class="mr-2">Number of Person</span>
+      <button (click)="modifyQuantity('min')" class="btn-sm btn btn-dark nbrperson"><strong>-</strong></button>
+      <input class="nbrperson" [disabled]="true" text="text" value="{{numberPerson}}">
+      <button (click)="modifyQuantity('max')" class="btn btn-sm btn-dark nbrperson"><strong>+</strong></button>
+    </div>
+    <div class="hotelpayment">
+      <span class="ml-auto">Price to Pay (HT)</span><input class="ml-auto" [disabled]="true" text="text" value="{{priceToPay | currency}}">
+    </div>
+
+    <div class="hotel-booking">
+      <button class="btn btn-danger" data-toggle="modal" data-target="#checkInModal" (click)="payHotel()">Pay</button>
+      <button class="btn btn-secondary ml-4" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>
+<app-check-in [paymentHT]="priceToPay" [paymentTTC]="priceToPayTTC"></app-check-in>

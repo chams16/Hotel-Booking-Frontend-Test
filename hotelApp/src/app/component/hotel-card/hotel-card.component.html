@@ -1,0 +1,23 @@
+<div class="card hotel">
+  <div class="hotel-content">
+    <div class="hotel-name">
+      <h4><a (click)="bookHotel(hotelItem)"><Strong class="mr-1">Name :</Strong>{{hotelItem.name}}</a></h4>
+      <span><Strong class="mr-1">Location :</Strong>{{hotelItem.adress}}</span>
+    </div>
+    <ul class="hotel-contact-details">
+
+      <li><i class="zmdi zmdi-email"></i>{{ hotelItem.email}}</li>
+
+    </ul>
+    <ul class="social-icons">
+      <li><span class="mr-1">number of room :</span>{{hotelItem.roomnbr}}</li>
+      <li><span  class="mr-1">Category :</span>
+        <ngb-rating [max]="5" [(rate)]="hotelItem.category" [readonly]="true"></ngb-rating>
+      </li>
+      <li><span class="mr-1">Price per Person :</span>{{hotelItem.price | currency}}</li>
+    </ul>
+    <div class="hotel-booking">
+      <button class="btn btn-danger" (click)="bookHotel(hotelItem)">Book Now</button>
+    </div>
+  </div>
+</div>

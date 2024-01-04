@@ -1,0 +1,17 @@
+<div class="container">
+  <form class="form-inline mb-3">
+    <input type="search" (ngModelChange)="searchItem(key.value)" #key="ngModel" ngModel
+           name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search hotels..." required>
+  </form>
+  <div class="row clearfix">
+    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let hotelItem of hotels">
+      <app-hotel-card [hotelItem]="hotelItem"></app-hotel-card>
+    </div>
+  </div>
+</div>
+
+<!-- Add Employee Modal -->
+<app-add-hotel-modal></app-add-hotel-modal>
+
+<!-- Notification for no employees -->
+<app-exception [hotelList]="hotels"></app-exception>

@@ -1,0 +1,50 @@
+<div class="modal fade" id="addHotelModal" tabindex="-1" role="dialog" aria-labelledby="addHotelModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addHotelModalLabel">Add Hotel</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddHotel(addForm)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" ngModel name="name" #name="ngModel" class="form-control" id="name" placeholder="Name" required>
+            <br/><span *ngIf="name.touched && name.invalid" style="color: red">please enter the name of the hotel</span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" ngModel name="email" #email="ngModel" class="form-control" id="email" placeholder="Email" required>
+            <br/><span *ngIf="email.touched && email.invalid" style="color: red">please enter the email adress of the hotel</span>
+          </div>
+          <div class="form-group">
+            <label for="adress">Hotel adress</label>
+            <input type="text" ngModel name="adress" #adress="ngModel" class="form-control" id="adress" placeholder="Hotel adress" required>
+            <br/><span *ngIf="adress.touched && adress.invalid" style="color: red">please enter the location of the hotel</span>
+          </div>
+          <div class="form-group">
+            <label for="price">Price Per Person</label>
+            <input type="text" min="0" ngModel name="price" #price="ngModel" class="form-control" id="price" placeholder="Price per Person" required>
+            <br/><span *ngIf="price.invalid && price.touched" style="color: red">please enter the price per person for this hotel</span>
+          </div>
+          <div class="form-group">
+            <label for="roomnbr">Number of Rooms</label>
+            <input type="text" ngModel min="0" name="roomnbr" #roomnbr="ngModel" class="form-control" id="roomnbr" placeholder="Number of Rooms" required>
+            <br/><span *ngIf="roomnbr.invalid && roomnbr.touched" style="color: red">please enter the number of rooms in this hotel</span>
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <input type="number" max="5" min="0" ngModel #category="ngModel" name="category" class="form-control" id="category" placeholder="category" required>
+            <br/><span *ngIf="category.invalid && category.touched" style="color: red">please enter a valid star number between 0 and 5</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="add-hotel-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
